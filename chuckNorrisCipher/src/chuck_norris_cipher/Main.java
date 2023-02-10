@@ -13,9 +13,7 @@ public class Main {
 
         System.out.println("\nThe result:");
         for (char x : input) {
-            int m = (int) x;
-
-            String b = String.format("%7s", Integer.toBinaryString((int) x)).replace(' ', '0');
+            String b = String.format("%7s", Integer.toBinaryString(x)).replace(' ', '0');
             System.out.printf("%s = %s\n", x, b);
         }
 
