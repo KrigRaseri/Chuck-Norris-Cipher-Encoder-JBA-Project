@@ -9,12 +9,16 @@ public class Main {
         //The biggest buffest reader
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Input string:");
-        String[] input = reader.readLine().split("");
+        char[] input = reader.readLine().toCharArray();
 
+        System.out.println("\nThe result:");
+        for (char x : input) {
+            int m = (int) x;
 
-        for (String x : input) {
-            System.out.print(x + " ");
+            String b = String.format("%7s", Integer.toBinaryString((int) x)).replace(' ', '0');
+            System.out.printf("%s = %s\n", x, b);
         }
+
 
     }
 }
