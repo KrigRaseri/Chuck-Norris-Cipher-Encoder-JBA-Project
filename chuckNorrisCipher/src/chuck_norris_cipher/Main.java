@@ -21,8 +21,12 @@ public class Main {
         }
 
         ChuckMethods.chuckCipher(binaryMessage);
+        System.out.println();
+        ChuckMethods.chuckCryption(binaryMessage);
 
     }
+
+
 
 
 
