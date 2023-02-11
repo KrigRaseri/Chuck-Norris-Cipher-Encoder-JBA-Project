@@ -20,9 +20,9 @@ public class Main {
             //System.out.printf("%s = %s\n", x, b);
         }
 
-        ChuckMethods.chuckCipher(binaryMessage);
-        System.out.println();
-        ChuckMethods.chuckCryption(binaryMessage);
+        //ChuckMethods.chuckCryption(binaryMessage);
+        ChuckMethods.chuckDecryption(binaryMessage);
+
 
     }
 
