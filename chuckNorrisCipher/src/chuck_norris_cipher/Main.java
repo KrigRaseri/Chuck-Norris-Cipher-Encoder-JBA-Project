@@ -6,29 +6,45 @@ import java.io.InputStreamReader;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        //The biggest buffest reader
+    public static void main(String[] args) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Input string:");
-        char[] input = reader.readLine().toCharArray();
-        String binaryMessage = "";
 
-        System.out.println("\nThe result:");
-        for (char x : input) {
-            String b = String.format("%7s", Integer.toBinaryString(x)).replace(' ', '0');
-            binaryMessage += b;
-            //System.out.printf("%s = %s\n", x, b);
+        while (true) {
+
+            System.out.println("Please input operation (encode/decode/exit):");
+            try {
+                String input = reader.readLine();
+
+                if (input.equals("exit")) {
+                    System.out.println("Bye!");
+                    break;
+                }
+
+                else if (input.equals("encode")) {
+                    ChuckMethods.chuckCryption(ChuckMethods.setBinaryMessage());
+
+                }
+
+                else if (input.equals("decode")) {
+                    String encodeInp = ChuckMethods.setEncodedMessage();
+
+                    if (!ChuckMethods.isEncodeValid(encodeInp)) {
+                        System.out.println("Encoded string is not valid.");
+                        System.out.println();
+                        continue;
+                    }
+
+                    ChuckMethods.chuckDecryption(encodeInp);
+                }
+
+                else {
+                    System.out.println("There is no '" + input + "' operation");
+                }
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-
-        //ChuckMethods.chuckCryption(binaryMessage);
-        ChuckMethods.chuckDecryption(binaryMessage);
-
-
     }
-
-
-
-
-
-    //===================================================================================
 }

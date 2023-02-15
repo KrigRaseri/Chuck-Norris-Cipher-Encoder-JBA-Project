@@ -1,7 +1,35 @@
 package chuck_norris_cipher;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class ChuckMethods {
+
+
+
+    public static String setEncodedMessage() {
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Input encoded string:");
+            String encodedMessage = null;
+
+                try {
+                    encodedMessage = reader.readLine();
+
+                }
+
+                catch (IOException e) {
+                    e.printStackTrace();
+             }
+
+
+         return encodedMessage;
+    }
+
+
+
     public static void chuckDecryption(String chuckMessage) {
         String[] array = chuckMessage.split(" ");
         int count = 0;
@@ -25,6 +53,7 @@ public class ChuckMethods {
         }
 
         //Goes through the binary string and stops every 7 characters to convert binary to ASCII.
+        System.out.println("Decoded message:");
         String m = "";
         for (int i = 1; i <= message.length(); i++) {
             m += message.charAt(i-1);
@@ -35,6 +64,7 @@ public class ChuckMethods {
             }
         }
 
+        System.out.println();
 
     }
 
@@ -45,21 +75,19 @@ public class ChuckMethods {
         char[] array = binaryMessage.toCharArray();
         char current;
 
-        while (count < binaryMessage.length())
-        {
-            if (array[count] == '0')
-            {
+        System.out.println("Encoded message:");
+        while (count < binaryMessage.length()) {
+            if (array[count] == '0') {
                 System.out.print("00 ");
                 current = '0';
             }
-            else
-            {
+
+            else {
                 System.out.print("0 ");
                 current = '1';
             }
 
-            while (array[count] == current)
-            {
+            while (array[count] == current) {
                 System.out.print("0");
                 count++;
                 if (count == binaryMessage.length()) break;
@@ -67,6 +95,7 @@ public class ChuckMethods {
 
             if (count < binaryMessage.length()) System.out.print(" ");
         }
+        System.out.println();
     }
 
 
