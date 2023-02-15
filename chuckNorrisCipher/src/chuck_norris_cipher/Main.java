@@ -1,10 +1,15 @@
 package chuck_norris_cipher;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
-
+/*
+* Program that asks for user to choose encode, or decode. Encode takes a string input to convert to binary, and then to
+* chuck code (refer to readme for more info). Decode decrypts the chuck code back into regular text. Type exit to
+* end the program.
+*
+* @author Krig Raseri (pen name)
+* */
 public class Main {
     public static void main(String[] args) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -12,6 +17,7 @@ public class Main {
         while (true) {
 
             System.out.println("Please input operation (encode/decode/exit):");
+
             try {
                 String input = reader.readLine();
 
@@ -21,7 +27,7 @@ public class Main {
                 }
 
                 else if (input.equals("encode")) {
-                    ChuckMethods.chuckCryption(ChuckMethods.setBinaryMessage());
+                    ChuckMethods.chuckCryption(ChuckMethods.setMessage());
 
                 }
 
@@ -42,7 +48,7 @@ public class Main {
                 }
 
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

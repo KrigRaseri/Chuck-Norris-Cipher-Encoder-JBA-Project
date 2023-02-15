@@ -1,16 +1,25 @@
 package chuck_norris_cipher;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/*
+* Chuck methods holds the methods used for main.
+*
+* @author Krig Raseri (pen name)
+* */
 public class ChuckMethods {
+
+    /**
+     * Checks the input for chuckDecryption to make sure it is valid.
+     *
+     * @param encoded_message represents the string input to be checked for validity from setEncodedMessage.
+     * */
     public static boolean isEncodeValid(String encoded_message) {
         boolean isTrue = true;
         String[] arr = encoded_message.split(" ");
         int count = 0;
-        String current = "";
 
         for (int i = 0; i < arr.length; i++) {
             if (i % 2 == 0) {
@@ -51,11 +60,14 @@ public class ChuckMethods {
     }
 
 
+    /**
+     * Asks user input of an encoded string to be used with chuckDecryption.
+     * */
     public static String setEncodedMessage() {
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Input encoded string:");
-            String encodedMessage = null;
+            String encodedMessage = "";
 
                 try {
                     encodedMessage = reader.readLine();
@@ -72,13 +84,10 @@ public class ChuckMethods {
 
 
 
-
-
-
-
-
-
-    public static String setBinaryMessage() {
+    /**
+     * Asks user for a string input to be converted to binary, and then to chuck code.
+     * */
+    public static String setMessage() {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Input string:");
@@ -98,6 +107,12 @@ public class ChuckMethods {
         return null;
     }
 
+
+    /**
+     * Decrypts the entered chuck code of "0"s back to binary, and then back to text.
+     *
+     * @param chuckMessage represents the user inputted chuck code to be decrypted, which is set by setEncoded message.
+     * */
     public static void chuckDecryption(String chuckMessage) {
         String[] array = chuckMessage.split(" ");
         int count = 0;
@@ -138,13 +153,18 @@ public class ChuckMethods {
 
 
 
-    public static void chuckCryption(String binaryMessage) {
+    /**
+     * Encrypt's the user inputted message by changing it to binary, and then to chuck code.
+     *
+     * @param Message represents the string message that is input from user, from setMessage.
+     * */
+    public static void chuckCryption(String Message) {
         int count = 0;
-        char[] array = binaryMessage.toCharArray();
+        char[] array = Message.toCharArray();
         char current;
 
         System.out.println("Encoded message:");
-        while (count < binaryMessage.length()) {
+        while (count < Message.length()) {
             if (array[count] == '0') {
                 System.out.print("00 ");
                 current = '0';
@@ -158,66 +178,11 @@ public class ChuckMethods {
             while (array[count] == current) {
                 System.out.print("0");
                 count++;
-                if (count == binaryMessage.length()) break;
+                if (count == Message.length()) break;
             }
 
-            if (count < binaryMessage.length()) System.out.print(" ");
+            if (count < Message.length()) System.out.print(" ");
         }
         System.out.println();
-    }
-
-
-
-    public static void chuckCipher(String inp) {
-        int count = 0;
-        char[] arr = inp.toCharArray();
-        char current = ' ';
-        char prev = arr[0];
-
-        for (char c : arr) {
-            current = c;
-
-            if (current != prev && current == '0') {
-                //System.out.println(count);
-                System.out.print("0 ");
-                printX("0", count);
-                System.out.print(" ");
-                count = 0;
-            }
-
-            if (current != prev && current == '1') {
-                System.out.print("00 ");
-                printX("0", count);
-                System.out.print(" ");
-                count = 0;
-            }
-
-
-            count++;
-            prev = c;
-
-
-        }
-
-        if (current == '1') {
-            System.out.print("0 " );
-            printX("0", count);
-        }
-
-        if (current == '0') {
-            System.out.print("00 " );
-            printX("0", count);
-        }
-
-
-    }
-
-
-
-
-    public static void printX(String b, int times) {
-        for (int i = 0; i < times; i++) {
-            System.out.print(b);
-        }
     }
 }
