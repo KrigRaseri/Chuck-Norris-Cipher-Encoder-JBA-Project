@@ -6,7 +6,49 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ChuckMethods {
+    public static boolean isEncodeValid(String encoded_message) {
+        boolean isTrue = true;
+        String[] arr = encoded_message.split(" ");
+        int count = 0;
+        String current = "";
 
+        for (int i = 0; i < arr.length; i++) {
+            if (i % 2 == 0) {
+                if (arr[i].equals("0")) {
+                    continue;
+                }
+
+                else if (arr[i].equals("00")) {
+                    continue;
+                }
+
+                else {
+                    isTrue = false;
+                }
+
+            }
+
+            for (int j = 0; j < arr[i].length(); j++) {
+                if (arr[i].charAt(j) != '0') {
+                    isTrue = false;
+                }
+
+                if (i % 2 != 0) {
+                    if (arr[i].charAt(j) == '0') {
+                        count++;
+                    }
+                }
+
+            }
+
+        }
+
+        if (count % 7 != 0) {
+            isTrue = false;
+        }
+
+        return isTrue;
+    }
 
 
     public static String setEncodedMessage() {
@@ -28,7 +70,13 @@ public class ChuckMethods {
          return encodedMessage;
     }
 
-    
+
+
+
+
+
+
+
 
     public static String setBinaryMessage() {
         try {
