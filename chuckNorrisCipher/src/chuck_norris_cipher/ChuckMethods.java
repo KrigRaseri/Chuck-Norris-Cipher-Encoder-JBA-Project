@@ -28,7 +28,27 @@ public class ChuckMethods {
          return encodedMessage;
     }
 
+    
 
+    public static String setBinaryMessage() {
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Input string:");
+            char[] input = reader.readLine().toCharArray();
+            String binaryMessage = "";
+
+            for (char x : input) {
+                String b = String.format("%7s", Integer.toBinaryString(x)).replace(' ', '0');
+                binaryMessage += b;
+            }
+            return binaryMessage;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
     public static void chuckDecryption(String chuckMessage) {
         String[] array = chuckMessage.split(" ");
