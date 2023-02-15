@@ -16,7 +16,7 @@ public class ChuckMethods {
      *
      * @param encoded_message represents the string input to be checked for validity from setEncodedMessage.
      * */
-    public static boolean isEncodeValid(String encoded_message) {
+    public boolean isEncodeValid(String encoded_message) {
         boolean isTrue = true;
         String[] arr = encoded_message.split(" ");
         int count = 0;
@@ -63,7 +63,7 @@ public class ChuckMethods {
     /**
      * Asks user input of an encoded string to be used with chuckDecryption.
      * */
-    public static String setEncodedMessage() {
+    public String setEncodedMessage() {
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Input encoded string:");
@@ -87,7 +87,7 @@ public class ChuckMethods {
     /**
      * Asks user for a string input to be converted to binary, and then to chuck code.
      * */
-    public static String setMessage() {
+    public String setMessage() {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Input string:");
@@ -113,7 +113,7 @@ public class ChuckMethods {
      *
      * @param chuckMessage represents the user inputted chuck code to be decrypted, which is set by setEncoded message.
      * */
-    public static void chuckDecryption(String chuckMessage) {
+    public void chuckDecryption(String chuckMessage) {
         String[] array = chuckMessage.split(" ");
         int count = 0;
         String message = "";
@@ -158,7 +158,7 @@ public class ChuckMethods {
      *
      * @param Message represents the string message that is input from user, from setMessage.
      * */
-    public static void chuckCryption(String Message) {
+    public void chuckCryption(String Message) {
         int count = 0;
         char[] array = Message.toCharArray();
         char current;

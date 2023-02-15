@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        ChuckMethods cm = new ChuckMethods();
 
         while (true) {
 
@@ -27,20 +28,20 @@ public class Main {
                 }
 
                 else if (input.equals("encode")) {
-                    ChuckMethods.chuckCryption(ChuckMethods.setMessage());
+                    cm.chuckCryption(cm.setMessage());
 
                 }
 
                 else if (input.equals("decode")) {
-                    String encodeInp = ChuckMethods.setEncodedMessage();
+                    String encodeInp = cm.setEncodedMessage();
 
-                    if (!ChuckMethods.isEncodeValid(encodeInp)) {
+                    if (!cm.isEncodeValid(encodeInp)) {
                         System.out.println("Encoded string is not valid.");
                         System.out.println();
                         continue;
                     }
 
-                    ChuckMethods.chuckDecryption(encodeInp);
+                    cm.chuckDecryption(encodeInp);
                 }
 
                 else {
